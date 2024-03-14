@@ -14,15 +14,15 @@ class FiltroInterrogacionAExclamacion(Filtro):
         return c
 
 
-creador = CreadorLector("test.txt")
-lector: Lector = (creador.con_filtro_parentesis_a_corchetes()
-                  .con_filtro_espacio_a_guion()
-                  .con_filtro_personalizado(FiltroInterrogacionAExclamacion)
-                  .con_filtro_personalizado()
-                  .crear_lector())
+if __name__ == '__main__':
+    creador = CreadorLector("test.txt")
+    lector: Lector = (creador.con_filtro_parentesis_a_corchetes()
+                      .con_filtro_espacio_a_guion()
+                      .con_filtro_personalizado(FiltroInterrogacionAExclamacion)
+                      .crear_lector())
 
-with lector as lec:
-    ch = lec.leer()
-    while ch != '':
-        print(ch, end='')
+    with lector as lec:
         ch = lec.leer()
+        while ch != '':
+            print(ch, end='')
+            ch = lec.leer()
